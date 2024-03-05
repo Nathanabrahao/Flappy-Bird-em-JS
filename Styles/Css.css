@@ -1,84 +1,52 @@
 :root{
     --font-texto: "Madimi One", sans-serif;
-    --transition-duration: 5s
+    --transition-duration: 5s;
+    --verde: #01ff01;
 }
 
+*{
+    padding: 0%;
+    margin: 0%;
+}
 
 body {
-    background-image: url(../img/wp6956942.jpeg) none;
+    min-height: 100vh;
+    background-image: url(../img/dia.jpeg) ;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.pontuacao{
-    position: fixed; 
-    top: 10%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: #24ccff; 
-    padding: 20px;
-    font-family: var(--font-texto);
-    border-radius: 2em;
+#jogo{
+    height: 1000px;
+    width: 100vh;
+    border: 10px solid black;
+    margin: auto;
+    overflow: hidden;
 }
 
-
-.perdeu{
-    display: none;
+#cano{
+    width: 30px;
+    height: 1000px;
+    position: relative;
+    left: 1550px;
+    animation: canoTransition var(--transition-duration) infinite linear;
 }
 
-.reset{
-    position: fixed; 
-    top: 60%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: #f1f1f1; 
-    padding: 20px;
-    font-family: var(--font-texto);
-    border-radius: 2em;
-    display: none;
-}
-
-
-.iniciar {
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: #f1f1f1; 
-    padding: 20px;
-    font-family: var(--font-texto);
-    border-radius: 2em;
-}
-
-.passaro{
-    position: fixed; 
-    top: 50%; 
-    left: 5%; 
-    transform: translate(-50%, -50%); 
-    padding: 5px;
-    width: 200px;
-    transition: top 4s ease;
-    display: none;
+@keyframes canoTransition {
+    0% {
+        left: 100%; 
     }
-
-.cano{
-    width: 300px;
-    position: fixed; 
-    top: 90%; 
-    transform: translate(-50%, -50%); 
-    padding: 5px;
-    left: 100%;
-    transition: left 4s ease;
-    background-size: cover;
-    display: none;
+    100%{
+        left: 0%;
+    }
 }
 
 
-.pontuacao{
-    position: fixed; 
-    top: 10%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: #3be8ff; 
-    padding: 20px;
-    font-family: var(--font-texto);
+#passagem{
+    width: 100px;
+    height: 250px;
+    position: relative;
+    left: 1550px;
+    top: -500px;
+    animation: canoTransition var(--transition-duration) infinite linear;
 }
