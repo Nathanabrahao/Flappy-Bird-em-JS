@@ -1,0 +1,28 @@
+@keyframes canoTransition {
+    0% {
+        left: 100%; 
+    }
+}
+
+:root{
+--transition-duration: 1s
+}
+
+
+
+@keyframes passaroTransition {
+    0% {
+        top: 110%; 
+    }
+}
+
+@keyframes canoTransition {
+    0% {
+        left: 100%; 
+    }
+    100%{
+        left: 0%;
+    }
+}
+
+/*animation: canoTransition var(--transition-duration) ease-in-out infinite;
