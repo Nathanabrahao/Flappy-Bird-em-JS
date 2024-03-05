@@ -10,9 +10,6 @@ body {
 }
 
 
-.inicia{
-    display: none;
-}
 
 
 .iniciar {
@@ -33,6 +30,7 @@ body {
     transform: translate(-50%, -50%); 
     padding: 5px;
     width: 200px;
+    transition: top 4s ease;
 }
 
 .cano{
