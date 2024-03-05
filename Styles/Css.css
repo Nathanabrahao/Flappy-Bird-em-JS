@@ -5,11 +5,37 @@
 
 
 body {
-    background-image: url(../img/wp6956942.jpeg);
+    background-image: url(../img/wp6956942.jpeg) none;
     background-size: cover;
 }
 
+.pontuacao{
+    position: fixed; 
+    top: 10%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #24ccff; 
+    padding: 20px;
+    font-family: var(--font-texto);
+    border-radius: 2em;
+}
 
+
+.perdeu{
+    display: none;
+}
+
+.reset{
+    position: fixed; 
+    top: 60%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #f1f1f1; 
+    padding: 20px;
+    font-family: var(--font-texto);
+    border-radius: 2em;
+    display: none;
+}
 
 
 .iniciar {
@@ -31,7 +57,8 @@ body {
     padding: 5px;
     width: 200px;
     transition: top 4s ease;
-}
+    display: none;
+    }
 
 .cano{
     width: 300px;
@@ -42,7 +69,16 @@ body {
     left: 100%;
     transition: left 4s ease;
     background-size: cover;
+    display: none;
 }
 
 
-
+.pontuacao{
+    position: fixed; 
+    top: 10%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #3be8ff; 
+    padding: 20px;
+    font-family: var(--font-texto);
+}
