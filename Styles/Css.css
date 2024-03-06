@@ -1,7 +1,8 @@
 :root{
     --font-texto: "Madimi One", sans-serif;
-    --transition-duration: 5s;
+    --transition-duration: 6s;
     --verde: #01ff01;
+    --branco: #f0f0f0;
 }
 
 *{
@@ -24,8 +25,22 @@ body {
     overflow: hidden;
 }
 
+
+.iniciar {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #f1f1f1; 
+    padding: 20px;
+    font-family: var(--font-texto);
+    border-radius: 2em;
+    display: none;
+}
+
+
 #cano{
-    width: 30px;
+    width: 100px;
     height: 1000px;
     position: relative;
     left: 1550px;
@@ -41,12 +56,24 @@ body {
     }
 }
 
-
 #passagem{
     width: 100px;
     height: 250px;
     position: relative;
     left: 1550px;
     top: -500px;
+    background-image: url(../img/dia.jpeg);
     animation: canoTransition var(--transition-duration) infinite linear;
 }
+
+
+
+.passaro{
+    width: 115px;
+    height: 50px;
+    position: absolute;
+    top: 500px;
+    border-radius: 10%;
+}
+
+

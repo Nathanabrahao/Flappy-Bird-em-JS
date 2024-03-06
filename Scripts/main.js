@@ -1,30 +1,42 @@
-const valorCano = document.querySelectorAll(".cano");
-const passarinho = document.querySelectorAll(".passaro");
-const iniciaGame = document.querySelector(".iniciar");
-const reinicia = document.querySelector(".reset");
-const somaCanos = document.querySelector(".canos")
+const colisao = document.querySelectorAll(".cano")
+const passagem = document.querySelectorAll(".passagem")
+const passaro = document.querySelectorAll(".passaro")
+var jumping = 0;
 
 
-iniciaGame.addEventListener("click", () => {
-  valorCano[0].style.left = "0";
-  passarinho[0].style.top = "100%";
-  iniciaGame.style.display = "none";
-  start();
-  addCano(canos);
+
+console.log(e.keycode)
+
+
+colisao[0].addEventListener('animationiteration', () => {
+  const random = -((Math.random() * 800) + 250);
+  passagem[0].style.top = random + "px";
 });
 
-
-
-reinicia.addEventListener("click", () => {
-  reset();
-});
-
-
-
-function addCano(iniciaGame) {
-  if (iniciaGame.style.display === "none") {
-    document.canos.innerHTML = `<img src="./img/super-mario-brothers-147465_960_720.jpg" alt="cano2" class="cano2">`;
+setInterval(function () {
+  const jumpPersonagem = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
+  if (jumping == 0) {
+    passaro[0].style.top = (jumpPersonagem + 3) + "px"
   }
+  console.log(jumpPersonagem)
+}, 10)
+
+
+function jump() {
+  jumping = 1;
+  let jumpCount = 0;
+  var jumpInterval = setInterval(function () {
+    var jumpPersonagem = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
+    if (jumpPersonagem > 6)  {
+      passaro[0].style.top = (jumpPersonagem - 5) + "px"
+    }
+    if (jumpCount > 20) {
+      clearInterval(jumpInterval)
+      jumping = 0;
+      jumpCount = 0;
+    }
+    jumpCount++;
+  }, 10)
 }
 
 
