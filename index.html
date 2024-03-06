@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" onclick="jump()">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,12 +13,20 @@
 
 
 
-<body>
+<body onclick="jump()">
+
     <div id="jogo">
+
+        <div id="placar" class="placar"></div>
+
         <div class="start">
-            <button class="iniciar">Inicie o Jogo</button>
+            <button id="iniciar" class="iniciar">Inicie o Jogo</button>
         </div>
 
+        <div class="reset">
+            <h3 class="perdeu">GameOver</h3>
+            <button id="restart" class="restart">Tentar Novamente</button>
+        </div>
 
         <div id="colisao">
             <img src="./img/cano.jpg" alt="cano" id="cano" class="cano">
@@ -32,10 +40,10 @@
         </div>
 
 
-       <script src="./Scripts/main.js"></script> 
+        <script src="./Scripts/main.js"></script>
     </div>
 
-    
+
 
 </body>
 

@@ -1,23 +1,23 @@
-:root{
+:root {
     --font-texto: "Madimi One", sans-serif;
-    --transition-duration: 6s;
+    --transition-duration: 3s;
     --verde: #01ff01;
     --branco: #f0f0f0;
 }
 
-*{
+* {
     padding: 0%;
     margin: 0%;
 }
 
 body {
     min-height: 100vh;
-    background-image: url(../img/dia.jpeg) ;
+    background-image: url(../img/dia.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#jogo{
+#jogo {
     height: 1000px;
     width: 100vh;
     border: 10px solid black;
@@ -25,13 +25,45 @@ body {
     overflow: hidden;
 }
 
+.placar {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 6px;
+    background: #5EE270;
+    font-size: var(--font-texto);
+    font-size: 25px;
+}
 
 .iniciar {
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: #f1f1f1; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-family: var(--font-texto);
+    border-radius: 2em;
+}
+
+.perdeu {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-family: var(--font-texto);
+    border-radius: 2em;
+    font-size: 200px;
+    display: none;
+}
+
+.restart {
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
     padding: 20px;
     font-family: var(--font-texto);
     border-radius: 2em;
@@ -39,7 +71,7 @@ body {
 }
 
 
-#cano{
+#cano {
     width: 100px;
     height: 1000px;
     position: relative;
@@ -49,14 +81,15 @@ body {
 
 @keyframes canoTransition {
     0% {
-        left: 100%; 
+        left: 100%;
     }
-    100%{
+
+    100% {
         left: 0%;
     }
 }
 
-#passagem{
+#passagem {
     width: 100px;
     height: 250px;
     position: relative;
@@ -68,12 +101,10 @@ body {
 
 
 
-.passaro{
+.passaro {
     width: 115px;
     height: 50px;
     position: absolute;
     top: 500px;
     border-radius: 10%;
 }
-
-
