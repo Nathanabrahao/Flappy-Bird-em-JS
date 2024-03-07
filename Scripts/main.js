@@ -1,39 +1,65 @@
-const colisao = document.querySelectorAll(".cano")
-const passagem = document.querySelectorAll(".passagem")
+const colisao = document.getElementById("colisao")
+const passagem = document.getElementById("passagem")
 const passaro = document.querySelectorAll(".passaro")
-const restart = document.querySelectorAll(".restart")
-const reseta = document.querySelector(".restart")
-const gameOver = document.querySelectorAll(".perdeu")
-const placar = document.getElementById("placar");
+
 const start = document.getElementById("iniciar")
 const startButton = document.querySelectorAll(".iniciar")
-const pontuacao = JSON.parse(localStorage.getItem("pontoMaximo")) || [];
+const gameOver = document.querySelectorAll(".perdeu")
+const restart = document.querySelectorAll(".restart")
+const reseta = document.getElementById("restart")
+
+let pontoMaximo = localStorage.getItem("pontoMaximo") || 0;
+let pontuacaoMaxima = localStorage.getItem("pontuacaoMaxima") || 0;
 var pontos = 0;
-var pontoMaximo = 0;
-var jumping = 0;
 
 
-resultadoPlacar()
 preCarregamento()
+
 
 start.addEventListener("click", () => {
   iniciaGame();
 })
 
 
+function iniciaGame() {
+  somaPontos()
+  resultadoPlacar()
+  imagemRestart();
 
-console.log(passaro)
 
+  colisao.addEventListener('animationiteration', () => {
+    const random = -((Math.random() * 800) + 250);
+    passagem.style.top = random + "px";
+    pontos++
+  });
 
-
+  setInterval(function () {
+    var characterTop = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
+    if (jumping == 0) {
+      passaro[0].style.top = (characterTop + 3) + "px";
+    }
+    var blockLeft = parseInt(window.getComputedStyle(colisao).getPropertyValue("left"));
+    var holeTop = parseInt(window.getComputedStyle(passagem).getPropertyValue("top"));
+    var cTop = -(500 - characterTop);
+    if ((characterTop > 1100) || ((blockLeft < 150) && (blockLeft > -200) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
+      resultadoPlacar()
+      restartGame()
+      reseta.addEventListener('click', () => {
+        location.reload(true);
+      })
+      passaro[0].style.top = 100 + "px";
+      counter = 0;
+    }
+  }, 10);
+}
 
 function jump() {
   jumping = 1;
   let jumpCount = 0;
   var jumpInterval = setInterval(function () {
-    var jumpPersonagem = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
-    if (jumpPersonagem > 6) {
-      passaro[0].style.top = (jumpPersonagem - 5) + "px"
+    var characterTop = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
+    if ((characterTop > 6) && (jumpCount < 15)) {
+      passaro[0].style.top = (characterTop - 5) + "px"
     }
     if (jumpCount > 20) {
       clearInterval(jumpInterval)
@@ -41,67 +67,56 @@ function jump() {
       jumpCount = 0;
     }
     jumpCount++;
-  }, 10)
-}
-
-function iniciaGame() {
-  imagemRestart();
-  colisao[0].addEventListener('animationiteration', () => {
-    const random = -((Math.random() * 800) + 250);
-    passagem[0].style.top = random + "px";
-    pontos++
-  });
-
-  setInterval(function () {
-    const jumpPersonagem = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("top"));
-    if (jumping == 0) {
-      passaro[0].style.top = (jumpPersonagem + 3) + "px"
-    }
-    if (jumpPersonagem > 1010) {
-      resultadoPlacar()
-      restartGame()
+    if ((characterTop > 1100)) {
+      jumping = 1;
+      jumpCount = 0;
     }
   }, 10)
 
 }
 
 
-function preCarregamento(){
-  colisao[0].style.display = "none"
+function preCarregamento() {
+  colisao.style.backgroundColor = "transparent"
+  passagem.style.backgroundColor = "transparent"
+
   passaro[0].style.display = "none"
-  passagem[0].style.display = "none"
 }
 
 
-function imagemRestart(){
-  colisao[0].style.display = ""
-  passaro[0].style.display = ""
-  passagem[0].style.display = ""
+function somaPontos() {
+  if (pontoMaximo < pontos) {
+    pontoMaximo = pontos;
+    pontuacaoMaxima = pontoMaximo
+  }
+  pontos = 0
+}
+
+function resultadoPlacar() {
+  placar.innerHTML = `<p>Melhor pontuação: ${pontuacaoMaxima} | Pontuação atual: ${pontos}</p>`
+}
+
+
+
+function imagemRestart() {
+  colisao.style.backgroundColor = "var(--verde)";
+  passagem.style.backgroundColor = "var(--azul)"
+
   startButton[0].style.display = "none"
-  
-}
+  gameOver[0].style.display = "none"
+  restart[0].style.display = "none"
 
+  passaro[0].style.display = ''
+  passaro[0].style.top = 500 + "px";
+  pontos = 0;
+
+}
 
 
 function restartGame() {
   gameOver[0].style.display = "inline"
   restart[0].style.display = "inline"
-  passagem[0].style.display = "none"
-  colisao[0].style.display = "none"
+  colisao.style.backgroundColor = "transparent"
+  passagem.style.backgroundColor = "transparent"
   passaro[0].style.display = "none"
-  // reseta.addEventListener('click', () => {
-  // });
-}
-
-function somaPontos(pontos) {
-  if (pontos > pontoMaximo) {
-    pontoMaximo = pontos
-  }
-  
-}
-
-
-
-function resultadoPlacar() {
-  placar.innerHTML = `<p>Melhor pontuação: ${pontoMaximo} | Pontuação atual: ${pontos}</p>`
 }

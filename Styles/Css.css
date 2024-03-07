@@ -3,6 +3,7 @@
     --transition-duration: 3s;
     --verde: #01ff01;
     --branco: #f0f0f0;
+    --azul: #1bffff;
 }
 
 * {
@@ -71,11 +72,12 @@ body {
 }
 
 
-#cano {
+#colisao {
     width: 100px;
     height: 1000px;
     position: relative;
     left: 1550px;
+    background-color: var(--verde);
     animation: canoTransition var(--transition-duration) infinite linear;
 }
 
@@ -95,10 +97,9 @@ body {
     position: relative;
     left: 1550px;
     top: -500px;
-    background-image: url(../img/dia.jpeg);
+    background-color: var(--azul);
     animation: canoTransition var(--transition-duration) infinite linear;
 }
-
 
 
 .passaro {
