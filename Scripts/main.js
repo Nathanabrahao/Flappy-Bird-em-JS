@@ -38,17 +38,25 @@ function iniciaGame() {
     if (jumping == 0) {
       passaro[0].style.top = (characterTop + 3) + "px";
     }
-    var blockLeft = parseInt(window.getComputedStyle(colisao).getPropertyValue("left"));
-    var holeTop = parseInt(window.getComputedStyle(passagem).getPropertyValue("top"));
-    var cTop = -(500 - characterTop);
-    if ((characterTop > 1100) || ((blockLeft < 150) && (blockLeft > -200) && ((cTop < holeTop) || (cTop > holeTop + 130)))) {
+    let blockLeft = parseInt(window.getComputedStyle(colisao).getPropertyValue("left"));
+    let holeTop = parseInt(window.getComputedStyle(passagem).getPropertyValue("top"));
+    let cTop = -(500 - characterTop);
+    let posicaoPassaro = parseInt(window.getComputedStyle(passaro[0]).getPropertyValue("left"))
+
+    console.log(blockLeft)
+    console.log(holeTop)
+    console.log(cTop)
+    console.log(posicaoPassaro)
+
+
+    if ((characterTop > 1100) || ((blockLeft < 5) && (blockLeft > -200))) {
       resultadoPlacar()
       restartGame()
       reseta.addEventListener('click', () => {
         location.reload(true);
       })
       passaro[0].style.top = 100 + "px";
-      counter = 0;
+      pontos = 0;
     }
   }, 10);
 }
